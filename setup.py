@@ -5,11 +5,7 @@ import re
 import setuptools
 import glob
 from os import path
-import torch
 from torch.utils.cpp_extension import CppExtension
-
-torch_ver = [int(x) for x in torch.__version__.split(".")[:2]]
-assert torch_ver >= [1, 3], "Requires PyTorch >= 1.3"
 
 
 def get_extensions():
@@ -59,6 +55,5 @@ setuptools.setup(
     long_description=long_description,
     ext_modules=get_extensions(),
     classifiers=["Programming Language :: Python :: 3", "Operating System :: OS Independent"],
-    cmdclass={"build_ext": torch.utils.cpp_extension.BuildExtension},
     packages=setuptools.find_namespace_packages(),
 )
